@@ -24,7 +24,7 @@ const Expenses = async () => {
         <h1 className="text-center text-[2rem] font-bold sm:text-[3rem]">
           Weekly expenses
         </h1>
-        <UserExpenses users={usersWithSerializablePrices} data-superjson />
+        <UserExpenses users={usersWithSerializablePrices} />
       </div>
     </main>
   );
