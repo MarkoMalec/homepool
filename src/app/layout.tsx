@@ -1,5 +1,7 @@
 import "~/styles/globals.css";
 import { UserContextProvider } from "~/context/userContext";
+import { prisma } from "~/lib/prisma";
+import { UsersContextProvider } from "~/context/usersContext";
 import { ThemeProvider } from "~/components/theme-provider";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
@@ -24,6 +26,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+  const users = await prisma.user.findMany({
+    include: {
+      checkedItems: true,
+    },
+  });
+
+  // extremely annoying solution to TS complaining about Decimal
+  const usersWithPriceAsString = users.map((user) => ({
+    ...user,
+    checkedItems: user.checkedItems.map((item) => ({
+      ...item,
+      price: item.price.toString(),
+    })),
+  }));
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -35,8 +51,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <UserContextProvider initialUser={session?.user}>
-            <Header />
-            {children}
+            <UsersContextProvider initialUsers={usersWithPriceAsString}>
+              <Header />
+              {children}
+            </UsersContextProvider>
           </UserContextProvider>
           <Toaster />
         </ThemeProvider>

@@ -1,4 +1,6 @@
 "use client";
+
+// Future me: This context returns session user (getServerSession(authOptions))
 import React, {
   createContext,
   useContext,
@@ -20,7 +22,6 @@ interface User {
   }[];
 }
 
-// Adjust the context to provide an object with user and possibly other properties
 const UserContext = createContext<{
   user: User | null;
   setUser: Dispatch<SetStateAction<User | undefined>>;
