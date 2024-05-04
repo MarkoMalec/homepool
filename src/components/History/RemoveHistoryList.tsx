@@ -19,6 +19,7 @@ const RemoveHistoryList = ({ items }: Props) => {
   return (
     <>
       <Separator className="my-2" />
+      {!items.length && <h4 className="text-md font-semibold text-center">No history...</h4>}
       <div className="grid">
         {items.map((item) => {
           const date = formatDistance(subDays(item.deletedAt, 3), new Date(), {

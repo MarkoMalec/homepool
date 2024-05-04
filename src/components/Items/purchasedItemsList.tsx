@@ -5,6 +5,7 @@ import { User } from "@prisma/client";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Badge } from "~/components/ui/badge";
 import { format } from "date-fns";
+import Link from "next/link";
 
 type Props = {
   items: {
@@ -22,6 +23,20 @@ const PurchasedItemsList = ({ items }: Props) => {
   );
   return (
     <>
+      {!items.length && (
+        <>
+          <p className="text-md text-center font-semibold">
+            No one bought anythingthis week yet.
+          </p>
+          <p className="text-center text-sm">
+            Check{" "}
+            <Link className="color-blue underline" href="/expenses">
+              Expenses
+            </Link>{" "}
+            to see overview of purchases.
+          </p>
+        </>
+      )}
       {sortedItems.map((item) => {
         const date = format(item.checkedAt, "d.M.yyyy");
         return (
