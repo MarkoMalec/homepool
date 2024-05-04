@@ -8,7 +8,7 @@ type ItemProps = {
   checkedAt: Date;
 };
 
-const useSumPricesCurrentWeek = (items: ItemProps[]) => {
+const useUserTotalSpendings = (items: ItemProps[]) => {
   const [total, setTotal] = useState(0);
 
   const isDateInCurrentWeek = (date: Date) => {
@@ -22,9 +22,11 @@ const useSumPricesCurrentWeek = (items: ItemProps[]) => {
   };
 
   useEffect(() => {
-    const sum = items
-      .filter((item) => isDateInCurrentWeek(item.checkedAt))
-      .reduce((sum, item) => sum + Number(item.price), 0);
+    // const sum = items
+    //   .filter((item) => isDateInCurrentWeek(item.checkedAt))
+    //   .reduce((sum, item) => sum + Number(item.price), 0);
+
+  const sum = items.reduce((sum, item) => sum + Number(item.price), 0)
 
     setTotal(sum);
   }, [items]);
@@ -32,4 +34,4 @@ const useSumPricesCurrentWeek = (items: ItemProps[]) => {
   return total;
 };
 
-export default useSumPricesCurrentWeek;
+export default useUserTotalSpendings;

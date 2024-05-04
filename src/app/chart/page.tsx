@@ -18,12 +18,9 @@ const ChartPage = async () => {
   }));
 
   return (
-    <div>
-        <div>
-            {/* <TotalDiffChart users={usersWithSerializablePrices} /> */}
-            <TotalsDiffChart users={usersWithSerializablePrices} />
-        </div>
-    </div>
+    <main className="mt-12">
+        <TotalsDiffChart users={usersWithSerializablePrices} />
+    </main>
   );
 };
 

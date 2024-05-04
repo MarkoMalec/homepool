@@ -22,7 +22,7 @@ const Expenses = async () => {
     <main className="flex min-h-screen flex-col items-center justify-center">
       <div className="container flex w-full max-w-[500px] flex-col justify-center gap-8 px-4 py-16">
         <h1 className="text-center text-[2rem] font-bold sm:text-[3rem]">
-          Weekly expenses
+          Spendings overview
         </h1>
         <UserExpenses users={usersWithSerializablePrices} />
       </div>
