@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Header from "~/components/Header";
 import { getServerSession } from "next-auth";
 import { authOptions } from "~/server/auth";
+import AddItemDialog from "~/components/Items/addItemDialog";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default async function RootLayout({
             <UsersContextProvider initialUsers={usersWithPriceAsString}>
               <Header />
               {children}
+              <AddItemDialog sticky />
             </UsersContextProvider>
           </UserContextProvider>
           <Toaster />

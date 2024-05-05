@@ -64,7 +64,7 @@ export function AddItemForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Toilet paper..." {...field} />
+                <Input placeholder="e.g. Toilet paper..." {...field} />
               </FormControl>
               <FormDescription>Name of the item.</FormDescription>
               <FormMessage />
