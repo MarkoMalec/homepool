@@ -19,7 +19,9 @@ const RemoveHistoryList = ({ items }: Props) => {
   return (
     <>
       <Separator className="my-2" />
-      {!items.length && <h4 className="text-md font-semibold text-center">No history...</h4>}
+      {!items.length && (
+        <h4 className="text-md text-center font-semibold">No history...</h4>
+      )}
       <div className="grid">
         {items.map((item) => {
           const date = formatDistance(subDays(item.deletedAt, 3), new Date(), {
@@ -27,11 +29,16 @@ const RemoveHistoryList = ({ items }: Props) => {
           });
 
           return (
-            <div key={item.id} className="mb-2">
-              <Badge className="text-[12px]">
-                {item.deletedBy.name} {date} deleted
-              </Badge>
-              <div className="text-sm">{item.itemName}</div>
+            <div key={item.id} className="mb-2 mt-5 rounded bg-secondary p-2">
+              <div className="flex justify-between">
+                <div>
+                  <strong>{item.deletedBy.name}</strong>
+                  <Badge className="ml-5 text-[12px]">deleted</Badge>
+                </div>
+                <small>{date}</small>
+              </div>
+              <Separator className="mt-2" />
+              <div className="mt-2 text-sm">- {item.itemName}</div>
             </div>
           );
         })}
