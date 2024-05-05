@@ -21,7 +21,8 @@ const RemoveHistory = async () => {
 
   return (
     <div className="py-10">
-      <h2 className="text-2xl">History</h2>
+      <h2 className="text-2xl font-bold">Remove history</h2>
+      <small>Items shown here are the ones that got removed from the "Stuff needed" list.</small>
       <RemoveHistoryList items={historyItems} />
     </div>
   );

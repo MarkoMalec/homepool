@@ -11,7 +11,7 @@ import {
   SheetClose,
 } from "~/components/ui/sheet";
 import { Button } from "~/components/ui/button";
-import { MenuIcon, HomeIcon, LucideSortDesc, PieChartIcon } from "lucide-react";
+import { MenuIcon, HomeIcon, LucideSortDesc, PieChartIcon, HistoryIcon } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 
@@ -56,6 +56,15 @@ const Menu = () => {
               >
                 <PieChartIcon />
                 Chart
+              </Link>
+            </SheetClose>
+            <SheetClose asChild>
+              <Link
+                className="flex gap-2 rounded p-2 hover:bg-accent"
+                href="/history"
+              >
+                <HistoryIcon />
+                History
               </Link>
             </SheetClose>
           </div>

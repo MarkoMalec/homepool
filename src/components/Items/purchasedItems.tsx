@@ -26,7 +26,7 @@ const PurchasedItems = async () => {
 
   return (
     <div className="py-10">
-      <h2 className="text-2xl">Previously purchased</h2>
+      <h2 className="text-2xl font-bold mb-5">Previously purchased</h2>
       <PurchasedItemsList items={serializableItems} />
     </div>
   );

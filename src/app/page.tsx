@@ -14,7 +14,6 @@ export default async function HomePage() {
         </div>
         <List />
         <PurchasedItems />
-        <RemoveHistory />
       </div>
     </main>
   );
