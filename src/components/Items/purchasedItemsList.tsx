@@ -26,7 +26,7 @@ const PurchasedItemsList = ({ items }: Props) => {
       {!items.length && (
         <>
           <p className="text-md text-center font-semibold">
-            No one bought anythingthis week yet.
+            No one bought anything this month yet.
           </p>
           <p className="text-center text-sm">
             Check{" "}
@@ -41,14 +41,14 @@ const PurchasedItemsList = ({ items }: Props) => {
         const date = format(item.checkedAt, "d.M.yyyy");
         return (
           <Card key={item.id} className="mb-2 overflow-hidden tracking-tight">
-            <CardHeader className="mb-1 bg-secondary p-3">
+            <CardHeader className="mb-1 bg-secondary p-2">
+              <div className="flex justify-between">
+                <span className="font-bold">{item.checkedBy.name}</span>
               <Badge className=" max-w-fit text-[8px]">{date}</Badge>
+              </div>
             </CardHeader>
-            <CardContent className="flex justify-between pt-3">
+            <CardContent className="flex justify-between pt-1 pb-2">
               <div>
-                <span className={`text-[${item.checkedBy.color}] font-bold`}>
-                  {item.checkedBy.name}
-                </span>{" "}
                 <span className="inline-block">{item.name}</span>
               </div>
               <Badge className="ml-auto block max-w-fit text-sm">

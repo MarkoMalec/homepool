@@ -76,7 +76,7 @@ const UserExpenses = ({ users }: Props) => {
             </CardHeader>
             <CardContent>
               <Accordion type="single">
-                {groupedItems.map(({ monthStart, items }, index) => (
+                {groupedItems.reverse().map(({ monthStart, items }, index) => (
                   <AccordionItem
                     value={`item-${index}`}
                     key={index}
