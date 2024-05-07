@@ -2,7 +2,6 @@
 
 import AddItemDialog from "~/components/Items/addItemDialog";
 import List from "~/components/Items/list";
-import RemoveHistory from "~/components/History/RemoveHistory";
 import PurchasedItems from "~/components/Items/purchasedItems";
 
 export default async function HomePage() {

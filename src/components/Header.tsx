@@ -18,7 +18,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex items-center gap-3">
-          <div className="hidden sm:block flex items-center gap-3">
+          <div className="flex hidden items-center gap-3 sm:block">
             <UserHeader includeExpense={false} />
           </div>
           <ThemeSwitcher />

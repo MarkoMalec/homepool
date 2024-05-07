@@ -15,8 +15,8 @@ export const useFetch = (onSuccess?: () => void) => {
     url: string,
     options: object,
     callback?: FetchCallback,
-    onFinally?: () => void,
     onError?: () => void,
+    onFinally?: () => void,
   ) => {
     setIsFetching(true);
 
@@ -34,9 +34,18 @@ export const useFetch = (onSuccess?: () => void) => {
         if (onSuccess) {
           onSuccess();
         }
+
+        if (onFinally) {
+          onFinally();
+        }
+
       }
     } catch (error) {
-      toast.error("Something went wrong, please try again later.");
+      if (onError) {
+        onError();
+      } else {
+        toast.error(`Something went wrong, please try again later.`);
+      }
       console.error("An error occurred:", error);
     }
 

@@ -2,10 +2,9 @@
 
 import React from "react";
 import { prisma } from "~/lib/prisma";
-import { startOfWeek, startOfMonth } from "date-fns";
+import { startOfMonth } from "date-fns";
 import PurchasedItemsList from "~/components/Items/purchasedItemsList";
 
-const lastMonday = startOfWeek(new Date(), { weekStartsOn: 1 });
 const firstOfMonth = startOfMonth(new Date());
 
 const PurchasedItems = async () => {
@@ -27,7 +26,7 @@ const PurchasedItems = async () => {
 
   return (
     <div className="py-10">
-      <h2 className="text-2xl font-bold mb-5">This month</h2>
+      <h2 className="mb-5 text-2xl font-bold">This month</h2>
       <PurchasedItemsList items={serializableItems} />
     </div>
   );

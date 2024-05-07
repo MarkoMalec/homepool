@@ -24,7 +24,7 @@ const RemoveHistoryList = ({ items }: Props) => {
       )}
       <div className="grid">
         {items.map((item) => {
-          const date = formatDistance(subDays(item.deletedAt, 3), new Date(), {
+          const date = formatDistance(subDays(item.deletedAt, 0), new Date(), {
             addSuffix: true,
           });
 
@@ -35,7 +35,7 @@ const RemoveHistoryList = ({ items }: Props) => {
                   <strong>{item.deletedBy.name}</strong>
                   <Badge className="ml-5 text-[12px]">deleted</Badge>
                 </div>
-                <small>{date}</small>
+                <small className="text-xs">{date}</small>
               </div>
               <Separator className="mt-2" />
               <div className="mt-2 text-sm">- {item.itemName}</div>

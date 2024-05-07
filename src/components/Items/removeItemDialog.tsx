@@ -17,17 +17,13 @@ import {
 import { useUserContext } from "~/context/userContext";
 
 import { Button } from "~/components/ui/button";
-import { Trash2Icon } from "lucide-react";
+import { Trash2Icon, Loader2Icon } from "lucide-react";
 
-const RemoveItemDialog = ({
-  itemId,
-}: {
-  itemId: string;
-}) => {
+const RemoveItemDialog = ({ itemId }: { itemId: string }) => {
   const { isMutating, doFetch } = useFetch();
   const { user } = useUserContext();
 
-  const onDelete = async (itemId: string, userId?: string) => {
+  const onDelete = async (itemId: string, userId: string) => {
     doFetch(
       "/api/item/remove",
       {
@@ -40,18 +36,28 @@ const RemoveItemDialog = ({
           userId: userId,
         }),
       },
-
       () => {
         toast.success("Item removed!");
       },
+      () => {
+        toast.error("You can't remove items you didn't put on the list.");
+      }
     );
   };
+
+  if (!user) {
+    return <Loader2Icon className="h-4 w-4 animate-spin" />
+  }
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" className="line p-0 px-2">
-          <Trash2Icon />
+          {isMutating ? (
+            <Loader2Icon className="h-4 w-4 animate-spin" />
+          ) : (
+            <Trash2Icon />
+          )}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -64,7 +70,7 @@ const RemoveItemDialog = ({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => onDelete(itemId, user?.id)}>
+          <AlertDialogAction onClick={() => onDelete(itemId, user.id)}>
             Remove
           </AlertDialogAction>
         </AlertDialogFooter>

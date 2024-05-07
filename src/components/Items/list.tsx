@@ -2,7 +2,7 @@
 
 import RemoveItemDialog from "./removeItemDialog";
 import CheckItemDialog from "./checkItemDialog";
-import { DrumstickIcon } from "lucide-react";
+import { AppleIcon, DrumstickIcon } from "lucide-react";
 
 import { prisma } from "~/lib/prisma";
 
@@ -20,7 +20,7 @@ const List = async () => {
                 className="flex items-center justify-between rounded-lg border p-3 shadow-lg md:p-4"
               >
                 <h3 className="flex items-center gap-3 text-xl font-extrabold tracking-tight">
-                  <DrumstickIcon />
+                  <AppleIcon />
                   {item.name}
                 </h3>
                 <div className="flex items-center gap-2">

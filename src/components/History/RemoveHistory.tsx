@@ -2,16 +2,16 @@
 
 import React from "react";
 import { prisma } from "~/lib/prisma";
-import { startOfWeek } from "date-fns";
+import { startOfWeek, startOfMonth } from "date-fns";
 import RemoveHistoryList from "./RemoveHistoryList";
 
-const lastMonday = startOfWeek(new Date(), { weekStartsOn: 1 });
+const firstOfMonth = startOfMonth(new Date());
 
 const RemoveHistory = async () => {
   const historyItems = await prisma.deletionHistory.findMany({
     where: {
       deletedAt: {
-        gte: lastMonday,
+        gte: firstOfMonth,
       },
     },
     include: {
@@ -20,9 +20,12 @@ const RemoveHistory = async () => {
   });
 
   return (
-    <div className="py-10">
+    <div className="mx-auto max-w-[500px] py-10">
       <h2 className="text-2xl font-bold">Remove history</h2>
-      <small>Items shown here are the ones that got removed from the "Stuff needed" list.</small>
+      <small>
+        Items shown here are the ones that got removed from the "Stuff needed"
+        list.
+      </small>
       <RemoveHistoryList items={historyItems} />
     </div>
   );

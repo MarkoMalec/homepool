@@ -1,5 +1,4 @@
 import React from "react";
-import TotalDiffChart from "~/components/charts/TotalDiffChart";
 import TotalsDiffChart from "~/components/charts/TotalsDiffChart";
 import { prisma } from "~/lib/prisma";
 

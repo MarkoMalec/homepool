@@ -11,7 +11,13 @@ import {
   SheetClose,
 } from "~/components/ui/sheet";
 import { Button } from "~/components/ui/button";
-import { MenuIcon, HomeIcon, LucideSortDesc, PieChartIcon, HistoryIcon } from "lucide-react";
+import {
+  MenuIcon,
+  HomeIcon,
+  LucideSortDesc,
+  PieChartIcon,
+  HistoryIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 
@@ -32,10 +38,7 @@ const Menu = () => {
           <h3 className="mb-3 text-xl font-bold">Menu</h3>
           <div className="flex flex-col space-y-2">
             <SheetClose asChild>
-              <Link
-                className="flex gap-2 rounded p-2 hover:bg-accent"
-                href="/"
-              >
+              <Link className="flex gap-2 rounded p-2 hover:bg-accent" href="/">
                 <HomeIcon />
                 Home
               </Link>
