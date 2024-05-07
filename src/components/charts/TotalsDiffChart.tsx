@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Chart } from "react-google-charts";
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 type User = {
   id: string;
@@ -42,46 +43,38 @@ const TotalsDiffChart = ({ users }: Props) => {
     );
     const status = userTotal === maxSpentAmount ? "green" : "black";
 
+    const firstName = user.name?.split(" ")[0];
+
     return {
-      name: user.name,
-      balance: userTotal.toFixed(2),
-      status,
+      name: firstName,
+      balance: Number(userTotal.toFixed(2)),
+      // status,
     };
   });
 
-  const theChartData = userStatuses.map((user) => {
-    const userName = user.name ? user.name.split(" ")[0] : null;
-    return [userName, Number(user.balance), `color: ${user.status}`];
-  });
-
-  const chartData = [["", "", { role: "style" }], ...theChartData];
-
-  const chartOptions = {
-    title: "User expenses",
-    chartArea: { width: "100%" },
-    hAxis: {
-      title: "Total €",
-      minValue: 0,
-    },
-    legend: { position: "none" },
-    backgroundColor: "transparent",
-    // vAxis: {
-    //   title: "City",
-    // },
-  };
-
   return (
-    <div>
+    <div className="max-w-[800px] mx-auto">
       <h2 className="mb-5 text-center text-[2rem] font-bold sm:text-[3rem]">
         User Spendings
       </h2>
-      <Chart
-        options={chartOptions}
-        data={chartData}
-        chartType="Bar"
-        width="100%"
-        height="400px"
-      />
+      <ResponsiveContainer width="100%" height={400}>
+      <BarChart
+        data={userStatuses}
+        margin={{
+          top: 5,
+          right: 30,
+          left: -20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="1 10" />
+        <XAxis dataKey="name" />
+        <YAxis dataKey="balance" />
+        <Tooltip />
+        {/* <Legend /> */}
+        <Bar dataKey="balance" className="fill-primary" activeBar={<Rectangle className="fill-foreground" stroke="white" />} />
+      </BarChart>
+    </ResponsiveContainer>
     </div>
   );
 };
