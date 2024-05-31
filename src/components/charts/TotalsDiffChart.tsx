@@ -67,7 +67,7 @@ const TotalsDiffChart = ({ users }: Props) => {
           bottom: 5,
         }}
       >
-        <CartesianGrid strokeDasharray="1 10" />
+        <CartesianGrid strokeDasharray="4 1" />
         <XAxis dataKey="name" />
         <YAxis dataKey="balance" />
         <Tooltip />

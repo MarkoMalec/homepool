@@ -17,7 +17,6 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
-import { DrawerClose } from "../ui/drawer";
 import { Input } from "~/components/ui/input";
 import { Loader2Icon } from "lucide-react";
 
@@ -39,6 +38,9 @@ export function AddItemForm() {
   const { isMutating, doFetch } = useFetch();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+
+    form.reset({ name: '' });
+    
     doFetch(
       "/api/item/create",
       {
@@ -66,12 +68,12 @@ export function AddItemForm() {
               <FormControl>
                 <Input placeholder="e.g. Toilet paper..." {...field} />
               </FormControl>
-              <FormDescription>Name of the item.</FormDescription>
+              <FormDescription>Name of the item you want to add to list.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <DrawerClose asChild>
+        <Button asChild>
           <Button className="w-full" type="submit">
             {isMutating ? (
               <Loader2Icon className="h-4 w-4 animate-spin" />
@@ -79,7 +81,7 @@ export function AddItemForm() {
               "Submit"
             )}
           </Button>
-        </DrawerClose>
+        </Button>
       </form>
     </Form>
   );

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { prisma } from "~/lib/prisma";
-import { startOfWeek, startOfMonth } from "date-fns";
+import { startOfMonth } from "date-fns";
 import RemoveHistoryList from "./RemoveHistoryList";
 
 const firstOfMonth = startOfMonth(new Date());
@@ -26,7 +26,7 @@ const RemoveHistory = async () => {
         Items shown here are the ones that got removed from the "Stuff needed"
         list.
       </small>
-      <RemoveHistoryList items={historyItems} />
+      <RemoveHistoryList items={historyItems.reverse()} />
     </div>
   );
 };

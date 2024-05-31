@@ -47,7 +47,7 @@ const useSessionUserBalance = (users: User[]) => {
         ? "bg-green-700"
         : balance > 0
           ? `+${balance.toFixed(2)} (positive)`
-          : `bg-red-700`;
+          : `bg-red-700 text-white`;
 
     return {
       balance: balance.toFixed(2),
