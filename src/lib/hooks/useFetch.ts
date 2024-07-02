@@ -38,7 +38,6 @@ export const useFetch = (onSuccess?: () => void) => {
         if (onFinally) {
           onFinally();
         }
-
       }
     } catch (error) {
       if (onError) {
@@ -61,6 +60,6 @@ export const useFetch = (onSuccess?: () => void) => {
 
   return {
     isMutating,
-    doFetch,
+    doFetch
   };
 };

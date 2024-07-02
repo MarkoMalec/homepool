@@ -29,7 +29,10 @@ export async function DELETE(req: NextRequest): Promise<NextResponse> {
         where: { id: itemId },
       });
 
-      return checkedItems;
+      return {
+        ...checkedItems,
+        price: checkedItems.price.toNumber(),
+      }
     });
 
     return NextResponse.json({
